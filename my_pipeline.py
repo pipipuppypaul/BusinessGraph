@@ -74,16 +74,16 @@ def pop_graph(df):
 def save_plot(graph):
     nt = Network('500px', '1000px')
     nt.from_nx(graph)
-    file_name = os.path.join(BASE_PATH, 'BusinessGraph', 'plot', 'business_graph.html')
+    file_name = os.path.join(BASE_PATH, 'plot', 'business_graph.html')
     nt.show(os.path.join('plot', 'business_graph.html'))
-    print(f"graph shown in {file_name}, copy the path and open in your browser")
+    print(f"graph shown in {os.path.abspath(file_name)}, copy the path and open in your browser")
 
 
 if __name__ == '__main__':
     today_date = datetime.datetime.today().date()
-    BASE_PATH = "/Users/yuhaibo/PycharmProjects/"
-    DEFAULT_DATA_HOME = os.path.join(BASE_PATH, f"BusinessGraph/data/nd_business_X_{today_date:%Y%m%d}.csv")
-    CHROME_SIMULATOR = os.path.join(BASE_PATH, "BusinessGraph/chromedriver_mac_20221211")
+    BASE_PATH = "./"
+    DEFAULT_DATA_HOME = os.path.join(BASE_PATH, "data", f"nd_business_X_{today_date:%Y%m%d}.csv")
+    CHROME_SIMULATOR = os.path.join(BASE_PATH, "chromedriver_mac_20221211")
     # # xattr -d com.apple.quarantine chromedriver_mac_20221211
     brows = webdriver.Chrome(CHROME_SIMULATOR)
     brows.implicitly_wait(10)  # makes sure browser is fully loaded
@@ -92,4 +92,3 @@ if __name__ == '__main__':
     df_info = pd.read_csv(DEFAULT_DATA_HOME)  # can be commented
     G = pop_graph(df_info)
     save_plot(G)
-
