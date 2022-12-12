@@ -1,6 +1,8 @@
 # BusinessGraph
 Repo that plots business graph for Sayari
 
+0. The project spec and roadmap is written in project_wiki.md
+
 0. This code is developed on Mac, and it needs chromedriver for Mac,
    if you want to run on Linux, you will need chromedriver for Linux.
 
